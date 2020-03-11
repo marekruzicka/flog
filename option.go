@@ -16,7 +16,7 @@ Usage: flog [options]
 Version: %s
 
 Options:
-  -f, --format string      choose log format. ("apache_common"|"apache_combined"|"apache_error"|"rfc3164"|"rfc5424"|"ntap_ems") (default "apache_common")
+  -f, --format string      choose log format. ("apache_common"|"apache_combined"|"apache_error"|"rfc3164"|"rfc5424"|"ntap_ems") (default "ntap_ems")
   -o, --output string      output filename. Path-like is allowed. (default "generated.log")
   -t, --type string        log output type. ("stdout"|"log"|"gz") (default "stdout")
   -n, --number integer     number of lines to generate.
@@ -67,12 +67,12 @@ func errorExit(err error) {
 
 func defaultOptions() *Option {
 	return &Option{
-		Format:    "apache_common",
-		Output:    "generated.log",
+		Format:    "ntap_ems",
+		Output:    "ntap_ems.log",
 		Type:      "stdout",
-		Number:    1000,
+		Number:    100,
 		Bytes:     0,
-		Sleep:     0.0,
+		Sleep:     0.13,
 		Delay:     0.0,
 		SplitBy:   0,
 		Overwrite: false,
