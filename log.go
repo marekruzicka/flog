@@ -21,7 +21,22 @@ const (
 	RFC5424Log = "<%d>%d %s %s %s %d ID%d %s %s"
 	// CommonLogFormat : {host} {user-identifier} {auth-user-id} [{datetime}] "{method} {request} {protocol}" {response-code} {bytes}
 	CommonLogFormat = "%s - %s [%s] \"%s %s %s\" %d %d"
+	// NetappEMSLog : <priority>{timestamp} [{cluster}-{node}:{ems_ident}:{severity}]: {message}
+	NetappEMSLog = "<%d>%s [%s-0%d:%s:%s]: %s"
 )
+
+func NewNetappEMSLog(t time.Time) string {
+	return fmt.Sprintf(
+		NetappEMSLog,
+		gofakeit.Number(0, 191),
+		t.Format(RFC3164),
+		strings.ToLower(gofakeit.Word()),
+		gofakeit.Number(1, 4),
+		gofakeit.Word()+"."+gofakeit.Word()+"."+gofakeit.Word(),
+		gofakeit.LogLevel("syslog"),
+		gofakeit.HackerPhrase(),
+	)
+}
 
 // NewApacheCommonLog creates a log string with apache common log format
 func NewApacheCommonLog(t time.Time) string {
