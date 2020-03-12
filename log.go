@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"strings"
 	"time"
 
@@ -23,7 +24,32 @@ const (
 	CommonLogFormat = "%s - %s [%s] \"%s %s %s\" %d %d"
 	// NetappEMSLog : <priority>{timestamp} [{cluster}-{node}:{ems_ident}:{severity}]: {message}
 	NetappEMSLog = "<%d>%s [%s-0%d:%s:%s]: %s"
+	// NetappAuditLog : {timestamp} [{ems_ident}:{severity}:{pid} {session-d} :: {cluster}:{protocol} :: {cluster}-{nodename}:{user} :: {message}
+	NetappAuditLog = "%s [%s:%s:%d] %d :: %s:%s :: %s-0%d:%s :: %s"
 )
+
+func NewNetappAuditLog(t time.Time) string {
+
+	clustername := strings.ToUpper(gofakeit.Word())
+
+	available_protocols := []string{"ontapi", "http", "ssh", "snmp"}
+	protocol := available_protocols[rand.Intn(len(available_protocols))]
+
+	return fmt.Sprintf(
+		NetappAuditLog,
+		t.Format(NetappAudit),
+		"kern_audit",
+		gofakeit.LogLevel("syslog"),
+		gofakeit.Number(1000, 9999),
+		gofakeit.Uint64(),
+		clustername,
+		protocol,
+		clustername,
+		gofakeit.Number(1, 4),
+		gofakeit.Username(),
+		gofakeit.HackerPhrase(),
+	)
+}
 
 func NewNetappEMSLog(t time.Time) string {
 	return fmt.Sprintf(

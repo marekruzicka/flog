@@ -128,6 +128,8 @@ func NewLog(format string, t time.Time) string {
 		return NewCommonLogFormat(t)
 	case "ntap_ems":
 		return NewNetappEMSLog(t)
+	case "ntap_audit":
+		return NewNetappAuditLog(t)
 	default:
 		return ""
 	}

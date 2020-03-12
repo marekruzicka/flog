@@ -16,7 +16,7 @@ Usage: flog [options]
 Version: %s
 
 Options:
-  -f, --format string      choose log format. ("apache_common"|"apache_combined"|"apache_error"|"rfc3164"|"rfc5424"|"ntap_ems") (default "ntap_ems")
+  -f, --format string      choose log format. ("apache_common"|"apache_combined"|"apache_error"|"rfc3164"|"rfc5424"|"ntap_ems"|"ntap_audit") (default "ntap_ems")
   -o, --output string      output filename. Path-like is allowed. (default "generated.log")
   -t, --type string        log output type. ("stdout"|"log"|"gz") (default "stdout")
   -n, --number integer     number of lines to generate.
@@ -31,7 +31,7 @@ Options:
   -l, --loop               loop output forever until killed.
 `
 
-var validFormats = []string{"apache_common", "apache_combined", "apache_error", "rfc3164", "rfc5424", "common_log", "ntap_ems"}
+var validFormats = []string{"apache_common", "apache_combined", "apache_error", "rfc3164", "rfc5424", "common_log", "ntap_ems", "ntap_audit"}
 var validTypes = []string{"stdout", "log", "gz"}
 
 // Option defines log generator options
