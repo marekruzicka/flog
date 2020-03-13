@@ -28,42 +28,6 @@ const (
 	NetappAuditLog = "%s [%s:%s:%d] %d :: %s:%s :: %s-0%d:%s :: %s"
 )
 
-func NewNetappAuditLog(t time.Time) string {
-
-	clustername := strings.ToUpper(gofakeit.Word())
-
-	available_protocols := []string{"ontapi", "http", "ssh", "snmp"}
-	protocol := available_protocols[rand.Intn(len(available_protocols))]
-
-	return fmt.Sprintf(
-		NetappAuditLog,
-		t.Format(NetappAudit),
-		"kern_audit",
-		gofakeit.LogLevel("syslog"),
-		gofakeit.Number(1000, 9999),
-		gofakeit.Uint64(),
-		clustername,
-		protocol,
-		clustername,
-		gofakeit.Number(1, 4),
-		gofakeit.Username(),
-		gofakeit.HackerPhrase(),
-	)
-}
-
-func NewNetappEMSLog(t time.Time) string {
-	return fmt.Sprintf(
-		NetappEMSLog,
-		gofakeit.Number(0, 191),
-		t.Format(RFC3164),
-		strings.ToLower(gofakeit.Word()),
-		gofakeit.Number(1, 4),
-		gofakeit.Word()+"."+gofakeit.Word()+"."+gofakeit.Word(),
-		gofakeit.LogLevel("syslog"),
-		gofakeit.HackerPhrase(),
-	)
-}
-
 // NewApacheCommonLog creates a log string with apache common log format
 func NewApacheCommonLog(t time.Time) string {
 	return fmt.Sprintf(
@@ -152,5 +116,41 @@ func NewCommonLogFormat(t time.Time) string {
 		RandHTTPVersion(),
 		gofakeit.StatusCode(),
 		gofakeit.Number(0, 30000),
+	)
+}
+
+func NewNetappEMSLog(t time.Time) string {
+	return fmt.Sprintf(
+		NetappEMSLog,
+		gofakeit.Number(0, 191),
+		t.Format(RFC3164),
+		strings.ToLower(gofakeit.Word()),
+		gofakeit.Number(1, 4),
+		gofakeit.Word()+"."+gofakeit.Word()+"."+gofakeit.Word(),
+		gofakeit.LogLevel("syslog"),
+		gofakeit.HackerPhrase(),
+	)
+}
+
+func NewNetappAuditLog(t time.Time) string {
+
+	clustername := strings.ToUpper(gofakeit.Word())
+
+	available_protocols := []string{"ontapi", "http", "ssh", "snmp"}
+	protocol := available_protocols[rand.Intn(len(available_protocols))]
+
+	return fmt.Sprintf(
+		NetappAuditLog,
+		t.Format(NetappAudit),
+		"kern_audit",
+		gofakeit.LogLevel("syslog"),
+		gofakeit.Number(1000, 9999),
+		gofakeit.Uint64(),
+		clustername,
+		protocol,
+		clustername,
+		gofakeit.Number(1, 4),
+		gofakeit.Username(),
+		gofakeit.HackerPhrase(),
 	)
 }

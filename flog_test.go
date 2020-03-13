@@ -23,7 +23,10 @@ func ExampleNewLog() {
 	fmt.Println(NewLog("rfc3164", created))
 	fmt.Println(NewLog("rfc5424", created))
 	fmt.Println(NewLog("common_log", created))
+	fmt.Println(NewLog("ntap_ems", created))
+	fmt.Println(NewLog("ntap_audit", created))
 	fmt.Println(NewLog("unknown", created))
+
 	// Output:
 	// 222.83.191.222 - - [22/Apr/2018:09:30:00 +0000] "DELETE /innovate/next-generation HTTP/1.1" 406 7610
 	// 144.199.149.125 - waelchi7603 [22/Apr/2018:09:30:00 +0000] "PUT /revolutionary HTTP/1.1" 301 8089 "https://www.futureaggregate.io/users" "Mozilla/5.0 (Macintosh; PPC Mac OS X 10_6_5 rv:4.0; en-US) AppleWebKit/536.38.2 (KHTML, like Gecko) Version/6.0 Safari/536.38.2"
@@ -31,6 +34,8 @@ func ExampleNewLog() {
 	// <94>Apr 22 09:30:00 ortiz5384 vel[1775]: If we copy the firewall, we can get to the PCI firewall through the redundant SQL port!
 	// <23>3 2018-04-22T09:30:00.000Z humaniterate.io iusto 544 ID177 - Use the optical RAM hard drive, then you can program the auxiliary feed!
 	// 195.44.200.155 - kihn6187 [22/Apr/2018:09:30:00 +0000] "GET /revolutionary/e-markets/holistic/syndicate HTTP/2.0" 404 14503
+	// <163>Apr 22 09:30:00 [quia-01:recusandae.vitae.soluta:emerg]: If we transmit the matrix, we can get to the AI port through the open-source AGP array!
+	// Sun Apr 22 2018 09:30:00 +00:00 [kern_audit:notice:3459] 8033156921637039849 :: NON:http :: NON-04:Wilkinson1680 :: I'Ll connect the primary XML program, that should pixel the SMS matrix!
 	//
 }
 

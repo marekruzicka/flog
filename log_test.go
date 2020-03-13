@@ -75,3 +75,25 @@ func ExampleNewCommonLogFormat() {
 	fmt.Println(NewCommonLogFormat(created))
 	// Output: 222.83.191.222 - - [22/Apr/2018:09:30:00 +0000] "DELETE /innovate/next-generation HTTP/1.1" 406 7610
 }
+
+func ExampleNewNetappEMSLog() {
+	rand.Seed(11)
+
+	monkey.Patch(time.Now, func() time.Time { return stopped })
+	defer monkey.Unpatch(time.Now)
+
+	created := time.Now()
+	fmt.Println(NewNetappEMSLog(created))
+	// Output: <24>Apr 22 09:30:00 [quae-02:consequatur.quidem.nisi:notice]: I'Ll reboot the auxiliary USB protocol, that should sensor the SAS capacitor!
+}
+
+func ExampleNewNetappAuditLog() {
+	rand.Seed(11)
+
+	monkey.Patch(time.Now, func() time.Time { return stopped })
+	defer monkey.Unpatch(time.Now)
+
+	created := time.Now()
+	fmt.Println(NewNetappAuditLog(created))
+	// Output: Sun Apr 22 2018 09:30:00 +00:00 [kern_audit:notice:8036] 6224634831868504800 :: QUIA:snmp :: QUIA-02:Jakubowski5702 :: We need to copy the redundant SAS program!
+}
